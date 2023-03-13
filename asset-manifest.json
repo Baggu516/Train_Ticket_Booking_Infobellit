@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Train_Ticket_Booking_Infobellit/static/css/main.cdea9987.css",
-    "main.js": "/Train_Ticket_Booking_Infobellit/static/js/main.6b803221.js",
+    "main.css": "/Train_Ticket_Booking_Infobellit/static/css/main.8c951c6b.css",
+    "main.js": "/Train_Ticket_Booking_Infobellit/static/js/main.28bf10c6.js",
     "static/js/787.5b42f312.chunk.js": "/Train_Ticket_Booking_Infobellit/static/js/787.5b42f312.chunk.js",
     "index.html": "/Train_Ticket_Booking_Infobellit/index.html",
-    "main.cdea9987.css.map": "/Train_Ticket_Booking_Infobellit/static/css/main.cdea9987.css.map",
-    "main.6b803221.js.map": "/Train_Ticket_Booking_Infobellit/static/js/main.6b803221.js.map",
+    "main.8c951c6b.css.map": "/Train_Ticket_Booking_Infobellit/static/css/main.8c951c6b.css.map",
+    "main.28bf10c6.js.map": "/Train_Ticket_Booking_Infobellit/static/js/main.28bf10c6.js.map",
     "787.5b42f312.chunk.js.map": "/Train_Ticket_Booking_Infobellit/static/js/787.5b42f312.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cdea9987.css",
-    "static/js/main.6b803221.js"
+    "static/css/main.8c951c6b.css",
+    "static/js/main.28bf10c6.js"
   ]
 }
