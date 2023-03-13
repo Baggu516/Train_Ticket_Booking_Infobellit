@@ -12,18 +12,64 @@ import { useTheme } from '@mui/material/styles';
 import {store} from "../App";
 // import {TextField} from "@material-ui/core";
 import { Button,Grid, Container, Divider, IconButton, Toolbar,TextField } from '@mui/material';
+//....................data...........................
+
 
 export default function DataTable(props) {
   const [n,setN]=useState(0)
   const [open, setOpen] =useState(false)
   const [availableData,setAvailableData] = useState(props.availableData)
+  const columns= [
+    { field: 'id', headerName: 'S.NO', width: 70 },
+    { field: 'trainName', headerName: 'Train name', width: 170 },
+    { field: 'date', headerName: 'Date', width: 130 },
+    { field: 'source', headerName: 'Start Station', width: 130 },
+    {
+      field: 'destination',
+      headerName: 'Destination Station',
+      // type: 'number',
+       width: 150,
+    },
+    { field: 'sourcetime', headerName: 'StartTime', width: 150 },
+    { field: 'endingtime', headerName: 'StopTime', width: 120 },
+    { field: 'price', headerName: 'Ticket Price',type:"number",width:90 },
+    {
+      field: 'button',
+      headerName: ' Book Your Ticket',
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <button
+            variant="contained"
+            color="primary"
+            onClick={()=>{ setOpen(true)
+              setN(params.row.id-1)
+            }}
+          >
+            Book
+          </button>
+        );
+      },
+    },
+    // { field: 'book', headerName: 'Click on Book for booking',type:"number",width:200 },
+  //   {
+  //     field: 'fullName',
+  //     headerName: 'Full name',
+  //     description: 'This column has a value getter and is not sortable.',
+  //     sortable: false,
+  //     width: 160,
+  //     valueGetter: (params) =>
+  //       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  //   },
+  ]
+  //............................................
 
   const handleClose = () => {
     setOpen(false);
   };
   const theme = useTheme();
 
-  let bookedColumns = Data?.columns
+  let bookedColumns = columns
   bookedColumns = [...bookedColumns,
     { field: 'name', headerName: 'Passenger Name', width: 150 },
     { field: 'email', headerName: 'Passenger Email', width: 200 },
@@ -42,6 +88,10 @@ const BookedDetails=(e)=>{
   e.preventDefault()
   let tempData = booked
   let id = booked[booked.length-1]?.id ? booked[booked.length-1]?.id+1 : 1;
+  console.log(data,"filttttttttttttttttttttttttttttttttttt")
+  // const fd=data.filter((item)=>{
+  //   return item
+  // })
   tempData = [...booked,{...data,id:id}]
   setBooked(tempData)
   props.stored(tempData)
@@ -57,7 +107,15 @@ const handleEvent= (
     setN(params.row.id-1)
   // setMessage();
 };
+const [fc,SetFc]=useState([])
 useEffect(()=>{
+  const f = bookedColumns.filter((c)=>{
+    return c.field!="button"
+  }
+    )
+  
+ 
+  SetFc([...f])
   setData({
     id:Data?.rows[n]?.id,
     trainName:Data?.rows[n]?.trainName,
@@ -227,8 +285,8 @@ useEffect(()=>{
     <div style={{ height: 400, width: '100%' }}>
       {props.value==0&&<DataGrid
         rows={availableData}
-        onRowClick={handleEvent}
-        columns={Data?.columns}
+        // onRowClick={handleEvent}
+        columns={columns}
         pageSize={5}
         slots={{
           toolbar: GridToolbar,
@@ -237,7 +295,7 @@ useEffect(()=>{
       />}
       {props.value===1&&<DataGrid
       rows={booked}
-      columns={bookedColumns}
+      columns={fc}
       // onRowClick={handleEvent}
       slots={{
         toolbar: GridToolbar,

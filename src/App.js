@@ -15,6 +15,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import Data from "./components/Data"
 // import TotalTicket from "./components/TotalTicket"
 import Model from './components/Model';
+//..............Autocomplete........
+import { Autocomplete } from '@mui/material';
+
+//...............................
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,6 +59,33 @@ export const store=createContext()
 //....................
 
 function App() {
+  //......................search.......................
+  const [startCity, setStartCity] = React.useState('');
+  const [endCity, setEndCity] = React.useState('');
+  const [dateOfJourney, setDateOfJourney] = React.useState('');
+  const handleStartCityChange = (event, value) => {
+    setStartCity(value);
+  };
+
+  const handleEndCityChange = (event, value) => {
+    setEndCity(value);
+  };
+
+  const handleDateOfJourneyChange = (event) => {
+    setDateOfJourney(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    search()
+    console.log({
+      startCity,
+      endCity,
+      dateOfJourney,
+    });
+    // handle form submission here
+  };
+  //.................................................
   const inputRef = React.useRef(null);
   const [search,setSearch]=useState("")
   const [tata,setTata]=useState(Data?.rows)
@@ -141,9 +172,78 @@ function App() {
             inputRef={inputRef}
             style={{borderBottom:'1px solid black',width:'25vw'}}
             onChange={(e)=>e?Search(e):null}
-          />  
+          /> 
+
         </span>
+     
+
         </span>
+      </Box>
+      <Box sx={{ width: '100%' }}> 
+        
+        <form onSubmit={handleSubmit}>
+        {/* <form> */}
+          <span style={{display:'flex',margin:"10px",marginLeft:"10px",width:"60%"}}>
+            <span style={{width:"30%"}}>
+            <Autocomplete
+        id="start-city"
+        options={['vayalpadu',
+        'hyderabad',
+        'Rajam',
+        'anathapur',
+        'kalikiri',
+        'renigunta',
+        'madanapall',
+        'kakinada',
+        'chennai', ]}
+        freeSolo
+        onChange={handleStartCityChange}
+        renderInput={(params) => (
+          <TextField {...params} label="Start City" variant="outlined" />
+        )}
+      />
+            </span>
+         
+       {/* </span> */}
+      {/* <span style={{position:'absolute',right:50}}> */}
+      <span style={{width:"30%"}}>
+      <Autocomplete
+        id="end-city"
+        options={["madanapalle",
+        "vayalpadu",
+        "madanapalle",
+       "angallu",
+        "Tamilnadu",
+        "chittor",
+        "Bangalore" ,
+        "goa",
+        "madhyapradesh",]}
+        freeSolo
+        onChange={handleEndCityChange}
+        renderInput={(params) => (
+          <TextField {...params} label="End City" variant="outlined" />
+        )}
+      />
+      </span>
+      {/* <span style={{position:'absolute',right:100}}> */}
+      <TextField
+        id="date-of-journey"
+        label="Date Of Journey"
+        type="datetime-local"
+        value={dateOfJourney}
+        onChange={handleDateOfJourneyChange}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      {/* </span> */}
+      {/* <span style={{position:'absolute',right:150}}> */}
+      <Button type="submit" variant="contained" color="primary">
+        Search
+      </Button>
+      </span>
+      
+    </form>
       </Box>
       <TabPanel value={value} index={0}>
         <TotalTicket value={value} availableData={searchData} bookedData={bookedData} stored={stored}/>
