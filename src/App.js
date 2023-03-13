@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import { Button, Container,TextField, Divider, IconButton, Toolbar, InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import RefreshIcon from "@mui/icons-material/Refresh";
 import Data from "./components/Data"
 // import TotalTicket from "./components/TotalTicket"
 import Model from './components/Model';
@@ -187,7 +188,7 @@ function App() {
   return (
     <>
    
-      <Container fixed>
+      <Container fixed sx={{hieght:'100vh',width:'85vw'}}>
       <Toolbar>
         <IconButton>
         <DirectionsSubwayFilledIcon/>
@@ -205,11 +206,14 @@ function App() {
                 <Tab label="Booked Tickets" {...a11yProps(1)} />
         </Tabs>
         <span  style={{position:'absolute',right:200}}>
+        <IconButton type="button" aria-label="search" onClick={() => Search()}>
+            {<RefreshIcon />}
+        </IconButton>
           <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
             <SearchIcon />
           </IconButton>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={{ ml: 1, flex: 1 ,paddingTop:2}}
             placeholder="Search For Data"
             value={searchValue} 
             inputRef={inputRef}
@@ -229,6 +233,7 @@ function App() {
           <span style={{display:'flex',margin:"10px",marginLeft:"10px",width:"60%"}}>
             <span style={{width:"30%"}}>
             <Autocomplete
+        className="inputFieldSearch"
         id="start-city"
         options={['vayalpadu',
         'hyderabad',
@@ -246,11 +251,12 @@ function App() {
         )}
       />
             </span>
-         
+         &nbsp;
        {/* </span> */}
       {/* <span style={{position:'absolute',right:50}}> */}
       <span style={{width:"30%"}}>
       <Autocomplete
+        className="inputFieldSearch"
         id="end-city"
         options={["madanapalle",
         "vayalpadu",
@@ -267,9 +273,10 @@ function App() {
           <TextField {...params} label="End City" variant="outlined" />
         )}
       />
-      </span>
+      </span>&nbsp;
       {/* <span style={{position:'absolute',right:100}}> */}
       <TextField
+        className="inputFieldSearch"
         id="date-of-journey"
         label="Date Of Journey"
         type="datetime-local"
@@ -278,17 +285,17 @@ function App() {
         InputLabelProps={{
           shrink: true,
         }}
-      />
+      />&nbsp;
       {/* </span> */}
       {/* <span style={{position:'absolute',right:150}}> */}
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" className='inputFieldSearch' variant="contained" color="primary">
         Search
       </Button>
       </span>
       
     </form>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value}  index={0}>
         <TotalTicket value={value} availableData={searchData} bookedData={bookedData} stored={stored}/>
       </TabPanel>
       <TabPanel value={value}   index={1}>

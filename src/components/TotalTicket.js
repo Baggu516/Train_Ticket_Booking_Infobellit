@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import {useState,useContext,useEffect} from "react"
+import '../index.css'
 import Model from './Model';
 import Data from "./Data"
 import Dialog from '@mui/material/Dialog';
@@ -20,36 +21,38 @@ export default function DataTable(props) {
   const [open, setOpen] =useState(false)
   const [availableData,setAvailableData] = useState(props.availableData)
   const columns= [
-    { field: 'id', headerName: 'S.NO', width: 70 },
-    { field: 'trainName', headerName: 'Train name', width: 170 },
-    { field: 'date', headerName: 'Date', width: 130 },
-    { field: 'source', headerName: 'Start Station', width: 130 },
+    { field: 'id', headerName: 'S.NO', width: 70 ,align:'center'},
+    { field: 'trainName', headerName: 'Train name', width: 170 ,align:'left'},
+    { field: 'date', headerName: 'Date', width: 130 ,align:'left'},
+    { field: 'source', headerName: 'Start Station', width: 130 ,align:'left'},
     {
       field: 'destination',
       headerName: 'Destination Station',
       // type: 'number',
        width: 150,
-    },
-    { field: 'sourcetime', headerName: 'StartTime', width: 150 },
-    { field: 'endingtime', headerName: 'StopTime', width: 120 },
-    { field: 'price', headerName: 'Ticket Price',type:"number",width:90 },
+    align:'left'},
+    { field: 'sourcetime', headerName: 'StartTime', width: 150 ,align:'left'},
+    { field: 'endingtime', headerName: 'StopTime', width: 120 ,align:'left'},
+    { field: 'price', headerName: 'Ticket Price',type:"number",width:90 ,align:'center'},
     {
       field: 'button',
       headerName: ' Book Your Ticket',
       width: 130,
       renderCell: (params) => {
         return (
-          <button
-            variant="contained"
-            color="primary"
-            onClick={()=>{ setOpen(true)
-              setN(params.row.id-1)
-            }}
-          >
-            Book
-          </button>
+            <Button
+                id="submit btn"
+                  variant="contained"
+                  className="book"
+                  onClick={()=>{ setOpen(true)
+                    setN(params.row.id-1)
+                  }}
+                >
+                  Book
+              </Button>
         );
       },
+      align:'center'
     },
     // { field: 'book', headerName: 'Click on Book for booking',type:"number",width:200 },
   //   {
@@ -71,9 +74,9 @@ export default function DataTable(props) {
 
   let bookedColumns = columns
   bookedColumns = [...bookedColumns,
-    { field: 'name', headerName: 'Passenger Name', width: 150 },
-    { field: 'email', headerName: 'Passenger Email', width: 200 },
-    { field: 'phoneNumber', headerName: 'Passenger Phone Number',type:"number",width:90 },
+    { field: 'name', headerName: 'Passenger Name', width: 150 ,align:'center'},
+    { field: 'email', headerName: 'Passenger Email', width: 200,align:'center' },
+    { field: 'phoneNumber', headerName: 'Passenger Phone Number',type:"number",width:90,align:'center' },
   ]
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -282,9 +285,10 @@ useEffect(()=>{
   ]
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <span style={{ height: 400, width: '90%' }}>
       {props.value==0&&<DataGrid
         rows={availableData}
+        sx={{height:'65vh',width:'76vw'}}
         // onRowClick={handleEvent}
         columns={columns}
         pageSize={5}
@@ -294,6 +298,7 @@ useEffect(()=>{
         rowsPerPageOptions={[1]}
       />}
       {props.value===1&&<DataGrid
+      sx={{height:'65vh',width:'76vw'}}
       rows={booked}
       columns={fc}
       // onRowClick={handleEvent}
@@ -366,10 +371,14 @@ useEffect(()=>{
         <input type="text" placeholder="Email" name="email" onChange={changeHandler}></input><br/>
         <input type="text" placeholder="phone number" name="phoneNumber" onChange={changeHandler}></input><br/> */}
         <DialogActions>
-          <Button autoFocus type='submit'>
+          <Button autoFocus id="submit btn"
+                  variant="contained"
+                  className="book" type='submit'>
                 Book
               </Button>
-              <Button onClick={handleClose} autoFocus>
+              <Button id="submit btn"
+                  variant="contained"
+                  className="book" onClick={handleClose} autoFocus>
                 Cancel
               </Button>
           </DialogActions>
@@ -387,6 +396,6 @@ useEffect(()=>{
         </DialogActions> */}
       </Dialog>
 
-    </div>
+    </span>
   );
 }

@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.book {
+  background: #111;
+  color: #fff
+}
+.book:hover {
+  background: 'rgb(37, 36, 36)'
+}
