@@ -77,13 +77,53 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    search()
+    // search()
     console.log({
       startCity,
       endCity,
       dateOfJourney,
     });
     // handle form submission here
+    if(value==0){
+      if(event){
+        let sc= startCity
+        let ec=endCity
+        let dt=dateOfJourney.slice(0,10).split("-").reverse().join("-")
+        var t=dateOfJourney.slice(-5,-3)
+        if(t>=12){
+          t=t-12
+        }
+
+        console.log(t)
+        console.log(dt)
+        let data = tata
+        let filterData = data.filter((item)=>{
+          return item.destination.toLowerCase().includes(ec.toLowerCase()) && item.source.toLowerCase().includes(sc.toLowerCase()) && item.date==dt && item.sourcetime.includes(t)
+        })
+        setSearchData([...filterData])
+        return filterData
+      }
+      else{
+        setSearchData([...tata])
+        return tata
+      }
+    }
+    else{
+      if(event){
+        let sc= startCity
+        let ec=endCity
+        let dt=dateOfJourney.slice(0,10).split("-").reverse().join("-")
+        let filterData = bookedData.filter((item)=>{
+          return item.destination.toLowerCase().includes(ec.toLowerCase()) && item.source.toLowerCase().includes(sc.toLowerCase()) && item.date==dt&& item.date==dt && item.sourcetime.includes(t)
+        })
+        setSearchData([...filterData])
+        return filterData
+      }
+      else{
+        setSearchData([...bookedData])
+        return bookedData
+      }
+    }
   };
   //.................................................
   const inputRef = React.useRef(null);
@@ -139,6 +179,9 @@ function App() {
   React.useEffect(()=>{
     setTata(Data?.rows)
     Search()
+    setStartCity(" ")
+    setEndCity(" ")
+    setStartCity(" ")
   },[value])
   
   return (
