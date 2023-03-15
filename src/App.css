@@ -23,7 +23,14 @@ th, td {
 
 tr:hover {background-color: #D6EEEE;}
 button{
-  background-color: rgb(43, 0, 255);
+  border:none;
   border-radius: 5px;
-  color: aliceblue;
+  margin: 0.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: #111;
+  color: #fff
+}
+button:hover {
+  background: rgb(45, 44, 44)
 }

@@ -193,20 +193,19 @@ function App() {
                 <IconButton>
                 <DirectionsSubwayFilledIcon/>
                 </IconButton>
-                <h3>
+                <h2>
                   Railway Ticket Booking
-                </h3>
+                </h2>
               </div>
-              <Divider/>
       {/* <Box sx={{ width: '100%' }}> */}
       {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}> */}
-             <div style={{display:'flex',height:"35px"}}>
+             <div style={{display:'flex',height:"35px",alignItems:'center'}}>
         {/* <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
               <Tab label="Available Trains" {...a11yProps(0)} />
                 <Tab label="Booked Tickets" {...a11yProps(1)} />
         </Tabs> */}
-               <button onClick={()=>setValue(0)}>Available Trains</button>
-               <button onClick={()=>setValue(1)}>Booked Tickets</button>
+               <button className={`${value}==0`?'navBar active':null} onClick={()=>setValue(0)}>Available Trains</button>&nbsp;
+               <button className={`${value}==1`?'navBar active':null} onClick={()=>setValue(1)}>Booked Tickets</button>
                <span  style={{position:'absolute',right:200}}>
                <IconButton type="button" aria-label="search" onClick={() => Search()}>
                    {<RefreshIcon />}
@@ -219,13 +218,19 @@ function App() {
                    placeholder="Search For Data"
                    value={searchValue} 
                    inputRef={inputRef}
-                   style={{borderBottom:'1px solid black',width:'25vw'}}
+                   style={{borderBottom:'1px solid black',width:'25vw',border:'none',
+                   padding: '12px 20px',
+                   margin: '8px 0',
+                   border:'none',
+                   border: '1px solid #ccc',
+                   borderRadius: '4px'
+                  }}
                    onChange={(e)=>e?Search(e):null}
                  /> 
        
                </span>
                </div>
-               
+               <hr></hr>
       {/* </Box> */}
       {/* </Box> */}
                <div style={{ width: '100%' }}> 
@@ -299,10 +304,10 @@ function App() {
                  </div>
       <div>
       {/* <TabPanel value={value}  index={0}> */}
-        {value==0&&<TotalTicket value={value} availableData={searchData} bookedData={bookedData} stored={stored}/>}
+        {value==0&&<TotalTicket className='scroll' value={value} availableData={searchData} bookedData={bookedData} stored={stored}/>}
       {/* </TabPanel> */}
       {/* <TabPanel value={value}   index={1}> */}
-        {value==1&&<TotalTicket value={value} bookedData={searchData} stored={stored} />}
+        {value==1&&<TotalTicket className='scroll' value={value} bookedData={searchData} stored={stored} />}
       {/* </TabPanel> */}
     </div>
     <span className="footer">

@@ -143,7 +143,7 @@ useEffect(()=>{
   const inputBookingFeilds = [
     {
       inputType: "textFeild",
-      name: "Train Name",
+      name: "TrainName",
       variant: "outlined",
       id: "trainName",
       placeholder: "",
@@ -422,13 +422,14 @@ useEffect(()=>{
           </span>
         <form >
         <DialogContent>
-        {/* <Grid container spacing={2}> */}
+        <table className="table customTable" style={{width:'100%',tableLayout:'fixed'}}>
+        <Grid container spacing={2}>
           {
             inputBookingFeilds.map(inputFeilds=>
               (
               <>
-              {/* <Grid item xs={12} sm={12}> */}
-                <input
+              <Grid xs={12} sm={12}>
+                {/* <input
                   variant={inputFeilds.variant}
                   required={inputFeilds.required}
                   fullWidth={inputFeilds.fullWidth}
@@ -443,12 +444,42 @@ useEffect(()=>{
                   defaultValue={inputFeilds.value}
                   placeholder={inputFeilds.placeholder}
                   onChange={changeHandler }
-                />
-              {/* </Grid> */}
+                /> */}
+                <tr>
+                  <td style={{width:'50%'}}>{inputFeilds.name} 
+                  </td><b>:</b>
+                  <td style={{width:'50%'}}>
+                    <input
+                          style={{borderBottom:'1px solid black',width:'15vw',border:'none',
+                          padding: '12px 20px',
+                          margin: '8px 0',
+                          border:'none',
+                          border: '1px solid #ccc',
+                          borderRadius: '4px'
+                        }}
+                      variant={inputFeilds.variant}
+                      required={inputFeilds.required}
+                      fullWidth={inputFeilds.fullWidth}
+                      id={inputFeilds.id}
+                      min={inputFeilds.min}
+                      InputProps={{inputProps:{min:inputFeilds.min}}}
+                      label={inputFeilds.label}
+                      disabled={inputFeilds.disabled}
+                      name={inputFeilds.name}
+                      focused={inputFeilds.focused}
+                      type={inputFeilds.type}
+                      defaultValue={inputFeilds.value}
+                      placeholder={inputFeilds.placeholder}
+                      onChange={changeHandler }
+                    />
+                  </td>
+                </tr>
+              </Grid>
               </>
               ))
           }
-        {/* </Grid> */}
+        </Grid>
+        </table>
         </DialogContent>
         {/* <input value={Data?.rows[n]?.trainName} disabled></input>
         <input value={Data?.rows[n]?.source} disabled></input>
