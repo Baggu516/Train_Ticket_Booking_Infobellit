@@ -97,8 +97,9 @@ function App() {
         }
 
         console.log(t)
-        console.log(dt)
+        console.log(dt,"dtttt")
         let data = tata
+        console.log(sc)
         let filterData = data.filter((item)=>{
           return item.destination.toLowerCase().includes(ec.toLowerCase()) && item.source.toLowerCase().includes(sc.toLowerCase()) && item.date==dt && item.sourcetime.includes(t)
         })
@@ -238,8 +239,20 @@ function App() {
                  <form onSubmit={handleSubmit}>
                  {/* <form> */}
                    <span style={{display:'flex',margin:"10px",marginLeft:"10px",width:"60%"}}>
-                     <span style={{width:"30%"}}>
-                     <Autocomplete
+                     <span >
+                      <input list="hi" placeholder="Start City" style={{width:"150px" ,height:"33px"}}  onChange={(e)=>setStartCity(e.target.value)}/>
+                      <datalist id="hi">
+                        <option value="vayalpadu"></option>
+                        <option value="madanapalle"></option>
+                        <option value="anathapur"></option>
+                        <option value="hyderabad"></option>
+                        <option value="chennai"></option>
+                        <option value="kalikiri"></option>
+                        <option value="kakinada"></option>
+                        <option value="Rajam"></option>
+                        <option value="renigunta"></option>
+                      </datalist>
+                     {/* <Autocomplete
                  className="inputFieldSearch"
                  id="start-city"
                  options={['vayalpadu',
@@ -256,30 +269,24 @@ function App() {
                  renderInput={(params) => (
                    <TextField {...params} label="Start City" variant="outlined" />
                  )}
-                 ></Autocomplete>
+                 ></Autocomplete> */}
                      </span>
                   &nbsp;
        {/* </span> */}
       {/* <span style={{position:'absolute',right:50}}> */}
                   <span style={{width:"30%"}}>
-                  <Autocomplete
-                    className="inputFieldSearch"
-                    id="end-city"
-                    options={["madanapalle",
-                    "vayalpadu",
-                    "madanapalle",
-                   "angallu",
-                    "Tamilnadu",
-                    "chittor",
-                    "Bangalore" ,
-                    "goa",
-                    "madhyapradesh",]}
-                    freeSolo
-                    onChange={handleEndCityChange}
-                    renderInput={(params) => (
-                      <TextField {...params} label="End City" variant="outlined" />
-                    )}
-                  />
+                  <input list="hi" placeholder="End City" style={{width:"150px" ,height:"33px",marginLeft:"30px"}}  onChange={(e)=> setEndCity(e.target.value)}/>
+                      <datalist id="hi">
+                        <option value="vayalpadu"></option>
+                        <option value="madanapalle"></option>
+                        <option value="anathapur"></option>
+                        <option value="hyderabad"></option>
+                        <option value="chennai"></option>
+                        <option value="kalikiri"></option>
+                        <option value="kakinada"></option>
+                        <option value="Rajam"></option>
+                        <option value="renigunta"></option>
+                      </datalist>
                   </span>&nbsp;
                   {/* <span style={{position:'absolute',right:100}}> */}
                   <input
