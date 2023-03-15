@@ -238,9 +238,15 @@ function App() {
         
                  <form onSubmit={handleSubmit}>
                  {/* <form> */}
-                   <span style={{display:'flex',margin:"10px",marginLeft:"10px",width:"60%"}}>
+                   <span style={{display:'flex',alignItems:'center'}}>
                      <span >
-                      <input list="hi" placeholder="Start City" style={{width:"150px" ,height:"33px"}}  onChange={(e)=>setStartCity(e.target.value)}/>
+                      <input list="hi" placeholder="Start City" style={{borderBottom:'1px solid black',width:'10vw',border:'none',
+                   padding: '12px 20px',
+                   margin: '8px 0',
+                   border:'none',
+                   border: '1px solid #ccc',
+                   borderRadius: '4px'
+                  }} onChange={(e)=>setStartCity(e.target.value)}/>
                       <datalist id="hi">
                         <option value="vayalpadu"></option>
                         <option value="madanapalle"></option>
@@ -274,39 +280,53 @@ function App() {
                   &nbsp;
        {/* </span> */}
       {/* <span style={{position:'absolute',right:50}}> */}
-                  <span style={{width:"30%"}}>
-                  <input list="hi" placeholder="End City" style={{width:"150px" ,height:"33px",marginLeft:"30px"}}  onChange={(e)=> setEndCity(e.target.value)}/>
-                      <datalist id="hi">
-                        <option value="vayalpadu"></option>
-                        <option value="madanapalle"></option>
-                        <option value="anathapur"></option>
-                        <option value="hyderabad"></option>
-                        <option value="chennai"></option>
-                        <option value="kalikiri"></option>
-                        <option value="kakinada"></option>
-                        <option value="Rajam"></option>
-                        <option value="renigunta"></option>
-                      </datalist>
+                  <span >
+                    <input list="hi" placeholder="End City" style={{borderBottom:'1px solid black',width:'10vw',border:'none',
+                    padding: '12px 20px',
+                    margin: '8px 0',
+                    border:'none',
+                    border: '1px solid #ccc',
+                    borderRadius: '4px'
+                    }}  onChange={(e)=> setEndCity(e.target.value)}/>
+                        <datalist id="hi">
+                          <option value="vayalpadu"></option>
+                          <option value="madanapalle"></option>
+                          <option value="anathapur"></option>
+                          <option value="hyderabad"></option>
+                          <option value="chennai"></option>
+                          <option value="kalikiri"></option>
+                          <option value="kakinada"></option>
+                          <option value="Rajam"></option>
+                          <option value="renigunta"></option>
+                        </datalist>
                   </span>&nbsp;
                   {/* <span style={{position:'absolute',right:100}}> */}
-                  <input
-                    className="inputFieldSearch"
-                    id="date-of-journey"
-                    label="Date Of Journey"
-                    type="datetime-local"
-                    value={dateOfJourney}
-                    onChange={handleDateOfJourneyChange}
-                    // InputLabelProps={{
-                    //   shrink: true,
-                    // }}
-                  />&nbsp;
+                  <span >
+                    <input
+                      className="inputFieldSearch"
+                      id="date-of-journey"
+                      label="Date Of Journey"
+                      type="datetime-local"
+                      value={dateOfJourney}
+                      onChange={handleDateOfJourneyChange}
+                      style={{borderBottom:'1px solid black',width:'10vw',border:'none',
+                      padding: '12px 20px',
+                      margin: '8px 0',
+                      border:'none',
+                      border: '1px solid #ccc',
+                      borderRadius: '4px'
+                    }} 
+                      // InputLabelProps={{
+                      //   shrink: true,
+                      // }}
+                    />&nbsp;
+                  </span>
                   {/* </span> */}
                   {/* <span style={{position:'absolute',right:150}}> */}
-                  <button type="submit" className='inputFieldSearch' variant="contained" color="primary">
+                  <button  style={{height:'6vh'}}>
                     Search
                   </button>
                   </span>
-                  
                  </form>
                  </div>
       <div>
