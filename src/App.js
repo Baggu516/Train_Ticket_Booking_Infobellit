@@ -21,38 +21,38 @@ import { Autocomplete } from '@mui/material';
 
 //...............................
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+// function TabPanel(props) {
+//   const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div
+//       role="tabpanel"
+//       hidden={value !== index}
+//       id={`simple-tabpanel-${index}`}
+//       aria-labelledby={`simple-tab-${index}`}
+//       {...other}
+//     >
+//       {value === index && (
+//         <Box sx={{ p: 3 }}>
+//           <Typography>{children}</Typography>
+//         </Box>
+//       )}
+//     </div>
+//   );
+// }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
+// TabPanel.propTypes = {
+//   children: PropTypes.node,
+//   index: PropTypes.number.isRequired,
+//   value: PropTypes.number.isRequired,
+// };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
+// function a11yProps(index) {
+//   return {
+//     id: `simple-tab-${index}`,
+//     'aria-controls': `simple-tabpanel-${index}`,
+//   };
+// }
 //.......................store.........
 export const store=createContext()
 
@@ -206,7 +206,7 @@ function App() {
                 <Tab label="Booked Tickets" {...a11yProps(1)} />
         </Tabs> */}
                <button onClick={()=>setValue(0)}>Available Trains</button>
-               <button onClick={()=>setValue(1)}>Booked Tickets</button>
+               <button onClick={()=>setValue(1)} style=>Booked Tickets</button>
                <span  style={{position:'absolute',right:200}}>
                <IconButton type="button" aria-label="search" onClick={() => Search()}>
                    {<RefreshIcon />}
@@ -234,7 +234,7 @@ function App() {
                  {/* <form> */}
                    <span style={{display:'flex',margin:"10px",marginLeft:"10px",width:"60%"}}>
                      <span style={{width:"30%"}}>
-                     <Autocomplete
+                     {/* <Autocomplete
                  className="inputFieldSearch"
                  id="start-city"
                  options={['vayalpadu',
@@ -251,30 +251,37 @@ function App() {
                  renderInput={(params) => (
                    <TextField {...params} label="Start City" variant="outlined" />
                  )}
-                 ></Autocomplete>
+                 ></Autocomplete> */}
+                 <input list="hii" placeholder='Start City'/>
+                  <datalist id="hii">
+                   <option value="madanapalle"></option> 
+                   <option value="vayalpadu"></option> 
+                   <option value="angallu"></option> 
+                   <option value="Tamilnadu"></option> 
+                   <option value="chittoor"></option> 
+                   <option value="Bangalore"></option> 
+                   <option value="goa"></option> 
+                   <option value="madhyapradesh"></option> 
+                   
+                  </datalist>
+                 
                      </span>
                   &nbsp;
        {/* </span> */}
       {/* <span style={{position:'absolute',right:50}}> */}
                   <span style={{width:"30%"}}>
-                  <Autocomplete
-                    className="inputFieldSearch"
-                    id="end-city"
-                    options={["madanapalle",
-                    "vayalpadu",
-                    "madanapalle",
-                   "angallu",
-                    "Tamilnadu",
-                    "chittor",
-                    "Bangalore" ,
-                    "goa",
-                    "madhyapradesh",]}
-                    freeSolo
-                    onChange={handleEndCityChange}
-                    renderInput={(params) => (
-                      <TextField {...params} label="End City" variant="outlined" />
-                    )}
-                  />
+                  <input list="hii" placeholder='End City'/>
+                  <datalist id="hii">
+                   <option value="madanapalle"></option> 
+                   <option value="vayalpadu"></option> 
+                   <option value="angallu"></option> 
+                   <option value="Tamilnadu"></option> 
+                   <option value="chittoor"></option> 
+                   <option value="Bangalore"></option> 
+                   <option value="goa"></option> 
+                   <option value="madhyapradesh"></option> 
+                   
+                  </datalist>
                   </span>&nbsp;
                   {/* <span style={{position:'absolute',right:100}}> */}
                   <input
